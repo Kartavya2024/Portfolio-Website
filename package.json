@@ -1,0 +1,19 @@
+{
+  "name": "kartavya-garhwal-portfolio-mern",
+  "version": "1.0.0",
+  "description": "Full-Stack MERN Personal Portfolio Website for Kartavya Garhwal",
+  "private": true,
+  "scripts": {
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "client": "npm --prefix client run dev",
+    "server": "npm --prefix server run dev",
+    "dev": "concurrently \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "build": "npm --prefix client run build",
+    "test": "npm --prefix server test"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "author": "Kartavya Garhwal",
+  "license": "MIT"
+}

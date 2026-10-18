@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="faceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ambient outer circle -->
+  <circle cx="120" cy="120" r="116" fill="url(#bgGrad)" stroke="url(#glowGrad)" stroke-width="3"/>
+
+  <!-- Code brackets subtle watermark background -->
+  <path d="M70 100 L50 120 L70 140" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+  <path d="M170 100 L190 120 L170 140" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+  <path d="M130 95 L110 145" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+
+  <!-- Developer Silhouette -->
+  <!-- Shoulders / Torso -->
+  <path d="M48 214 C48 174 80 156 120 156 C160 156 192 174 192 214" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <path d="M78 214 C82 188 100 174 120 174 C140 174 158 188 162 214" fill="#2563eb" opacity="0.2"/>
+  
+  <!-- Neck -->
+  <path d="M106 136 L106 160 L134 160 L134 136 Z" fill="#cbd5e1"/>
+  
+  <!-- Head -->
+  <ellipse cx="120" cy="108" rx="36" ry="42" fill="url(#faceGrad)"/>
+  
+  <!-- Modern Hair -->
+  <path d="M84 98 C82 72 98 56 120 56 C144 56 158 70 156 94 C148 76 134 72 118 74 C100 76 90 86 84 98 Z" fill="#0f172a"/>
+
+  <!-- Glasses / Tech Vibe -->
+  <rect x="96" y="98" width="18" height="12" rx="3" stroke="#2563eb" stroke-width="2.5" fill="#3b82f6" fill-opacity="0.15"/>
+  <rect x="126" y="98" width="18" height="12" rx="3" stroke="#2563eb" stroke-width="2.5" fill="#3b82f6" fill-opacity="0.15"/>
+  <line x1="114" y1="104" x2="126" y2="104" stroke="#2563eb" stroke-width="2.5"/>
+
+  <!-- Confident smile -->
+  <path d="M112 126 Q120 134 128 126" stroke="#475569" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+  <!-- Glowing Tech Badge -->
+  <circle cx="180" cy="65" r="16" fill="#0f172a" stroke="#10b981" stroke-width="2"/>
+  <path d="M174 65 L178 69 L187 60" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

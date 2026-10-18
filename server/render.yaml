@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: kartavya-portfolio-api
+    env: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install && npm run generate-resumes
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CLIENT_URL
+        sync: false
+      - key: MONGODB_URI
+        sync: false
