@@ -10,6 +10,11 @@ const connectDB = async () => {
     return false;
   }
 
+  // If already connected, reuse connection (important for serverless invocations)
+  if (mongoose.connection.readyState >= 1) {
+    return true;
+  }
+
   try {
     const conn = await mongoose.connect(uri, {
       serverSelectionTimeoutMS: 5000,

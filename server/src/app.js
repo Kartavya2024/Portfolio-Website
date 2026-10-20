@@ -31,10 +31,15 @@ const corsOptions = {
     // Allow requests with no origin (like mobile apps, curl, postman, direct browser file downloads)
     if (!origin) return callback(null, true);
 
-    if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
+    if (
+      allowedOrigins.indexOf(origin) !== -1 ||
+      origin.endsWith('.vercel.app') ||
+      process.env.NODE_ENV === 'development'
+    ) {
       callback(null, true);
     } else {
-      callback(new Error(`CORS blocked request from origin: ${origin}`));
+      // Allow for public portfolio API access
+      callback(null, true);
     }
   },
   methods: ['GET', 'POST', 'OPTIONS'],
@@ -48,13 +53,18 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: '50kb' }));
 app.use(express.urlencoded({ extended: true, limit: '50kb' }));
 
-// API Routes
+// API Routes (Mounted both with /api prefix and direct for serverless rewrite compatibility)
 app.use('/api/health', healthRoutes);
+app.use('/health', healthRoutes);
+
 app.use('/api/contact', contactRoutes);
+app.use('/contact', contactRoutes);
+
 app.use('/api/resume', resumeRoutes);
+app.use('/resume', resumeRoutes);
 
 // Root route
-app.get('/', (req, res) => {
+app.get(['/', '/api'], (req, res) => {
   res.json({
     name: 'Kartavya Garhwal Portfolio API',
     version: '1.0.0',
