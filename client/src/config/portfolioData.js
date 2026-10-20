@@ -28,8 +28,8 @@ export const personalInfo = {
   email: 'kartavya.contact@example.com', // Placeholder: Update with your primary email
   phone: '+91-XXXXXXXXXX', // Placeholder: Optional phone contact
   socialLinks: {
-    github: 'https://github.com/kartavyagarhwal', // Placeholder: Update with your GitHub profile URL
-    linkedin: 'https://linkedin.com/in/kartavya-garhwal', // Placeholder: Update with your LinkedIn profile URL
+    github: 'https://github.com/Kartavya2024', // Placeholder: Update with your GitHub profile URL
+    linkedin: 'https://www.linkedin.com/in/kartavya-garhwal-developer?utm_source=share_via&utm_content=profile&utm_medium=member_android', // Placeholder: Update with your LinkedIn profile URL
     twitter: '', // Optional
   },
   bio: `I am a third-year Computer Science Engineering student at JK Lakshmipat University (JKLU) in Jaipur, India. My passion lies in engineering robust full-stack software systems and exploring the intersection of modern Artificial Intelligence, Machine Learning, Cybersecurity, and Retrieval-Augmented Generation (RAG).
