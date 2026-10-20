@@ -51,4 +51,10 @@ const startServer = async () => {
   }
 };
 
-startServer();
+// Only start the HTTP server when this file is run directly (not imported by Vercel)
+if (require.main === module) {
+  startServer();
+}
+
+// Export app for Vercel Services (framework: express)
+module.exports = app;

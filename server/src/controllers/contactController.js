@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Contact = require('../models/Contact');
+const { connectDB } = require('../config/db');
 
 /**
  * @desc    Submit a new contact message
@@ -64,7 +65,16 @@ const submitContactMessage = async (req, res, next) => {
       });
     }
 
-    // Check database connection state
+    // Lazy-connect to MongoDB if not already connected (critical for serverless/Vercel)
+    if (mongoose.connection.readyState !== 1) {
+      try {
+        await connectDB();
+      } catch (dbErr) {
+        console.warn('⚠️ Lazy DB connect attempt failed:', dbErr.message);
+      }
+    }
+
+    // Check database connection state after connection attempt
     if (mongoose.connection.readyState !== 1) {
       console.error(
         '⚠️ MongoDB is not connected (readyState !== 1). Contact submission cannot be persisted.'

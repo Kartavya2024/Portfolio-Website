@@ -1,7 +1,14 @@
+const path = require('path');
+const dotenv = require('dotenv');
+
+// Load environment variables (ensures they're available in serverless/Vercel mode)
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const errorHandler = require('./middleware/errorHandler');
+const { connectDB } = require('./config/db');
 
 // Route handlers
 const healthRoutes = require('./routes/healthRoutes');
@@ -52,6 +59,23 @@ app.use(cors(corsOptions));
 // Request body parsers with strict size limits
 app.use(express.json({ limit: '50kb' }));
 app.use(express.urlencoded({ extended: true, limit: '50kb' }));
+
+// Lazy MongoDB connection middleware (ensures DB is connected in serverless/Vercel)
+let dbConnectPromise = null;
+app.use(async (req, res, next) => {
+  if (process.env.MONGODB_URI && require('mongoose').connection.readyState === 0) {
+    if (!dbConnectPromise) {
+      dbConnectPromise = connectDB().catch((err) => {
+        console.warn('⚠️ Lazy DB connect warning:', err.message);
+        dbConnectPromise = null;
+      });
+    }
+    try {
+      await dbConnectPromise;
+    } catch (_) {}
+  }
+  next();
+});
 
 // API Routes (Mounted both with /api prefix and direct for serverless rewrite compatibility)
 app.use('/api/health', healthRoutes);
