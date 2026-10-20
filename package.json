@@ -3,16 +3,12 @@
   "version": "1.0.0",
   "description": "Full-Stack MERN Personal Portfolio Website for Kartavya Garhwal",
   "private": true,
-  "workspaces": [
-    "client",
-    "server"
-  ],
   "scripts": {
     "install:all": "npm --prefix server install && npm --prefix client install",
     "client": "npm --prefix client run dev",
     "server": "npm --prefix server run dev",
     "dev": "concurrently \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
-    "build": "npm --prefix client install && npm --prefix client run build",
+    "build": "cd client && npm install && npm run build",
     "test": "npm --prefix server test"
   },
   "dependencies": {
